@@ -40,7 +40,7 @@ class CreateRatingSerializer(serializers.ModelSerializer):
         fields = ("star", "movie")
 
     def create(self, validated_data):
-        rating = Rating.objects.update_or_create(
+        rating, _ = Rating.objects.update_or_create(
             ip=validated_data.get('ip', None),
             movie=validated_data.get('movie', None),
             defaults={'star': validated_data.get("star")}
@@ -69,7 +69,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         list_serializer_class = FilterReviewLIstSerializer
         model = Review
-        fields = ("name", "text", "children")
+        fields = ("id", "name", "text", "children")
 
 
 class MovieDetailSerializer(serializers.ModelSerializer):
