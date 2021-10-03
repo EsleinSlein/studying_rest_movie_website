@@ -18,6 +18,10 @@ class FilterReviewLIstSerializer(serializers.ListSerializer):
         data = data.filter(parent=None)
         return super().to_representation(data)
 
+    class Meta:
+        model = Review
+        fields = "__all__"
+
 
 class ActorListSerializer(serializers.ModelSerializer):
     """Вывод списка актеров и режиссеров"""
@@ -53,6 +57,10 @@ class RecursiveSerializer(serializers.ModelSerializer):
     def to_representation(self, value):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
+
+    class Meta:
+        model = Review
+        fields = "__all__"
 
 
 class ReviewCreateSerializer(serializers.ModelSerializer):
