@@ -1,4 +1,5 @@
-# Для запуска выполнить следующие комманды:
+# Учебный проект по Django REST.
+## Для запуска выполнить следующие комманды:
 
 install requirements: 
 `pip install -r requirements.txt`
